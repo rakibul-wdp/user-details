@@ -1,8 +1,9 @@
-import { CircularProgress, Grid } from '@mui/material';
+import { Avatar, CircularProgress, Grid } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './App.css';
+import profileImage from './assets/images/profile-avatar.png';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -47,16 +48,11 @@ function App() {
           {loading && <div style={{textAlign: 'center'}}>Users coming soon...!!!</div>}
           {error ? (<div style={{textAlign: 'center'}}>Error occurred in loading...!!!</div>) : userData.length === 0 ? (!loading && (<div style={{textAlign: 'center'}}>No users to display...!!!</div>)) : Array.isArray(userData) ? (userData?.map((user) => {
             return (
-              <div key={user.id}>
-                <img
-                  src={user.avatar ? user.avatar : 'https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg'}
-                  alt='user profile pic'
-                  width={30}
-                  style={{marginRight: 20}}
-                />
-                <p>{user.profile.firstName + ' ' + user.profile.lastName}</p>
-              </div>
-            )
+              <Box display={'flex'} key={user.id}>
+                <Avatar alt="Remy Sharp" src={profileImage} />
+                <p>{user.profile.firstName + " " + user.profile.lastName}</p>
+              </Box>
+            );
           })) : (<div style={{textAlign: 'center'}}>Invalid data type</div>)}
         </Grid>
         <Grid></Grid>
