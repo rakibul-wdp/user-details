@@ -50,7 +50,7 @@ function App() {
         )}
         {error && <h3>Error in Laoding Data</h3>}
       </Box>
-      <Grid container spacing={12} sx={{p: 17}}>
+      <Grid container spacing={12} sx={{ p: 17 }}>
         <Grid item xs={12} md={6}>
           <div className="header">
             <h3>USER LIST</h3>
@@ -100,25 +100,88 @@ function App() {
           {details.length === 0 ? (
             <div className="contact-details">No user selected</div>
           ) : (
-            <div className="contact-details">
-              <Avatar alt="profile pic details" src={profileImage} />
-              <p className="username">{details[0].profile.username}</p>
-              <div className="text description">
-                <p>{details[0].Bio}</p>
-              </div>
-              <div className="text">
-                Full Name
-                <p>{`${details[0].profile.firstName} ${details[0].profile.lastName}`}</p>
-              </div>
-              <div className="text">
-                Job Title
-                <p>{details[0].jobTitle}</p>
-              </div>
-              <div className="text">
-                Email
-                <p>{details[0].profile.email}</p>
-              </div>
-            </div>
+            <Box sx={{mt: 5}}>
+              <Avatar
+                alt="profile pic details"
+                sx={{ width: 200, height: 200, margin: "auto" }}
+                src={profileImage}
+              />
+              <Typography
+                sx={{ fontWeight: "bold", mb: 3, mt: 2, textAlign: "center" }}
+              >
+                {details[0].profile.username}
+              </Typography>
+              <Box
+                sx={{
+                  backgroundColor: "#DBDBDB",
+                  borderRadius: "5px",
+                  fontWeight: 500,
+                  width: "50%",
+                  margin: "auto",
+                  p: 1.5,
+                  pb: 3,
+                  mb: 5,
+                  border: 1,
+                }}
+              >
+                <Typography>{details[0].Bio}</Typography>
+              </Box>
+              <Box>
+                <Typography sx={{ width: "50%", margin: "auto" }}>
+                  Full Name
+                </Typography>
+                <Typography
+                  sx={{
+                    backgroundColor: "#DBDBDB",
+                    borderRadius: "5px",
+                    fontWeight: 500,
+                    width: "50%",
+                    margin: "auto",
+                    p: 1,
+                    mb: 2,
+                    border: 1,
+                  }}
+                >{`${details[0].profile.firstName} ${details[0].profile.lastName}`}</Typography>
+              </Box>
+              <Box>
+                <Typography sx={{ width: "50%", margin: "auto" }}>
+                  Job Title
+                </Typography>
+                <Typography
+                  sx={{
+                    backgroundColor: "#DBDBDB",
+                    borderRadius: "5px",
+                    fontWeight: 500,
+                    width: "50%",
+                    margin: "auto",
+                    p: 1,
+                    mb: 2,
+                    border: 1,
+                  }}
+                >
+                  {details[0].jobTitle}
+                </Typography>
+              </Box>
+              <Box>
+                <Typography sx={{ width: "50%", margin: "auto" }}>
+                  Email
+                </Typography>
+                <Typography
+                  sx={{
+                    backgroundColor: "#DBDBDB",
+                    borderRadius: "5px",
+                    fontWeight: 500,
+                    width: "50%",
+                    margin: "auto",
+                    p: 1,
+                    mb: 2,
+                    border: 1,
+                  }}
+                >
+                  {details[0].profile.email}
+                </Typography>
+              </Box>
+            </Box>
           )}
         </Grid>
       </Grid>
