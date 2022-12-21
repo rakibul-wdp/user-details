@@ -1,7 +1,7 @@
-import { Avatar, CircularProgress, Grid } from '@mui/material';
+import { Avatar, CircularProgress, Grid, List, ListItemButton, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import profileImage from './assets/images/profile-avatar.png';
 
@@ -10,6 +10,7 @@ function App() {
   const [error, setError] = useState(false);
   const [userData, setUserData] = useState([]);
   const [details, setDetails] = useState([]);
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
 
   const getUsers = async () => {
     setLoading(true);
@@ -34,6 +35,10 @@ function App() {
     getUsers();
   }, [])
 
+  const handleListItemClick = (event, index) => {
+    setSelectedIndex(index);
+  };
+
   return (
     <>
       <Box style={{ textAlign: "center" }}>
@@ -45,7 +50,7 @@ function App() {
         )}
         {error && <h3>Error in Laoding Data</h3>}
       </Box>
-      <Grid container spacing={3} className="container">
+      <Grid container spacing={12} sx={{p: 17}}>
         <Grid item xs={12} md={6}>
           <div className="header">
             <h3>USER LIST</h3>
@@ -66,14 +71,22 @@ function App() {
           ) : Array.isArray(userData) ? (
             userData?.map((user) => {
               return (
-                <div
-                  onClick={() => setUserDetails(user.id)}
-                  className="contact"
-                  key={user.id}
-                >
-                  <Avatar alt="profile pic" src={profileImage} />
-                  <p>{user.profile.firstName + " " + user.profile.lastName}</p>
-                </div>
+                <Box onClick={() => setUserDetails(user.id)} key={user.id}>
+                  <List>
+                    <ListItemButton
+                      sx={{ backgroundColor: "#ececec", borderRadius: "5px" }}
+                      selected={selectedIndex === user.id}
+                      onClick={(event) => handleListItemClick(event, user.id)}
+                    >
+                      <Avatar alt="profile pic" src={profileImage} />
+                      <Typography
+                        sx={{ ml: 1.5, fontWeight: "bold", fontSize: 18 }}
+                      >
+                        {user.profile.firstName + " " + user.profile.lastName}
+                      </Typography>
+                    </ListItemButton>
+                  </List>
+                </Box>
               );
             })
           ) : (
