@@ -1,3 +1,5 @@
+import { CircularProgress } from '@mui/material';
+import { Box } from '@mui/system';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './App.css';
@@ -27,9 +29,17 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
-      {userData.map(user => <h3 key={user.id}>{user.id}</h3>)}
-    </div>
+    <>
+      <Box style={{ textAlign: "center" }}>
+        {loading && (
+          <>
+            <h3>Loading...!!!</h3>
+            <CircularProgress size={50} />
+          </>
+        )}
+        {error && <h3>Error in Laoding Data</h3>}
+      </Box>
+    </>
   );
 }
 
