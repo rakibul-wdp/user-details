@@ -50,7 +50,7 @@ function App() {
         )}
         {error && <h3>Error in Laoding Data</h3>}
       </Box>
-      <Grid container spacing={12} sx={{ p: 17 }}>
+      <Grid container spacing={12} sx={{p: {xs: 3, sm: 7, md: 12, lg: 17}}}>
         <Grid item xs={12} md={6}>
           <div className="header">
             <h3>USER LIST</h3>
@@ -127,7 +127,7 @@ function App() {
                 <Typography>{details[0].Bio}</Typography>
               </Box>
               <Box>
-                <Typography sx={{ width: "50%", margin: "auto" }}>
+                <Typography sx={{ width: "53%", margin: "auto" }}>
                   Full Name
                 </Typography>
                 <Typography
@@ -144,7 +144,7 @@ function App() {
                 >{`${details[0].profile.firstName} ${details[0].profile.lastName}`}</Typography>
               </Box>
               <Box>
-                <Typography sx={{ width: "50%", margin: "auto" }}>
+                <Typography sx={{ width: "53%", margin: "auto" }}>
                   Job Title
                 </Typography>
                 <Typography
@@ -163,7 +163,7 @@ function App() {
                 </Typography>
               </Box>
               <Box>
-                <Typography sx={{ width: "50%", margin: "auto" }}>
+                <Typography sx={{ width: "53%", margin: "auto" }}>
                   Email
                 </Typography>
                 <Typography
